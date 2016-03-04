@@ -51,6 +51,34 @@ public class Inscriptions implements Serializable
 	}
 
 	/**
+	 * Retourne toutes les personnes.
+	 * @return
+	 */
+	
+	public SortedSet<Personne> getPersonnes()
+	{
+		SortedSet<Personne> personnes = new TreeSet<>();
+		for (Candidat c : getCandidats())
+			if (c instanceof Personne)
+				personnes.add((Personne)c);
+		return Collections.unmodifiableSortedSet(personnes);
+	}
+
+	/**
+	 * Retourne toutes les équipes.
+	 * @return
+	 */
+	
+	public SortedSet<Equipe> getEquipes()
+	{
+		SortedSet<Equipe> equipes = new TreeSet<>();
+		for (Candidat c : getCandidats())
+			if (c instanceof Equipe)
+				equipes.add((Equipe)c);
+		return Collections.unmodifiableSortedSet(equipes);
+	}
+
+	/**
 	 * Créée une compétition. Ceci est le seul moyen, il n'y a pas
 	 * de constructeur public dans {@link Competition}.
 	 * @param nom
