@@ -3,6 +3,7 @@
 	<name>InscriptionsSportives</name>
 	<comment></comment>
 	<projects>
+		<project>CommandLineMenus</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
