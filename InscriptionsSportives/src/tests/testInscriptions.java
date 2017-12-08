@@ -23,10 +23,32 @@ class testInscriptions {
 		assertEquals("Vince", lesManouches.getNom());
 	}
 	
+	void EquipeRemove()
+	{
+		lesManouches.add(boris);
+		lesManouches.remove(boris);
+		assertEquals("boris", lesManouches.getMembres());
+	}
+	
+	void CompetitionsDelete()
+	{
+		flechettes.setNom("Vince");;
+		flechettes.delete();
+		assertEquals("Vince", flechettes.getNom());
+	}
+	
 	void CompetitionsSetnom()
 	{
 		flechettes.setNom("Cauchemard");
 		assertEquals("Cauchemard", flechettes.getNom());
+	}
+	
+	void CompetitionGetDate()
+	{
+		Competition foot = inscriptions.createCompetition("Foot monde ", null, true);
+	
+		foot.getDateCloture();
+		assertEquals("null", foot.getDateCloture());
 	}
 
 	void PersonneSetnom()
@@ -40,11 +62,4 @@ class testInscriptions {
 		tony.setMail("test@gmail.com");
 		assertEquals("test@gmail.com", tony.getMail());
 	}
-	
-	void EquipeRemove()
-	{
-		lesManouches.add(boris);
-		lesManouches.remove(boris);
-		lesManouches.getMembres();
-	}	
 }
