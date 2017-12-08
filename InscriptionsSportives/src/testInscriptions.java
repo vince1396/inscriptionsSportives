@@ -39,5 +39,10 @@ class testInscriptions {
 		assertEquals("test@gmail.com", tony.getMail());
 	}
 	
-	
+	void EquipeRemove()
+	{
+		lesManouches.add(boris);
+		lesManouches.remove(boris);
+		lesManouches.getMembres();
+	}	
 }
