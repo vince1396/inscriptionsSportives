@@ -1,78 +1,77 @@
 package menu;
 
-import commandLineMenus.Menu;
-import commandLineMenus.Option;
+import commandLineMenus.*;
 
 public class MainMenu {
 	
 	static Menu getMainMenu() {
 		
 		Menu mainMenu = new Menu("Menu principal");
-		mainMenu.add(getTeamOption());
-		mainMenu.add(getPersonneOption());
-		mainMenu.add(getCandOption());
-		mainMenu.add(getCompOption());
+		mainMenu.add(getTeamMenu());
+		mainMenu.add(getPersonneMenu());
+		mainMenu.add(getCandMenu());
+		mainMenu.add(getCompMenu());
 		mainMenu.addQuit("q");
 		
 		return mainMenu;
 	}
 	
-	static Option getTeamOption()
+	static Menu getTeamMenu()
 	{
-		Option teamOption = new Option("Equipe","1", getTeamAction());
-		return teamOption;
+		Menu teamMenu = new Menu("Menu equipe");
+		return teamMenu;
 	}
 	
-	static Option getPersonneOption()
+	static Menu getPersonneMenu()
 	{
-		Option personneOption = new Option("Personne","2", getPersonneAction());
-		return personneOption;
+		Menu personneMenu = new Menu("Menu Personne");
+		return personneMenu;
 
 	}
 	
-	static Option getCandOption()
+	static Menu getCandMenu()
 	{
-		Option CandOption = new Option("Candidat","3", getCandAction());
-		return CandOption;
+		Menu CandMenu = new Menu("MenuCandidat");
+		return CandMenu;
 	}
 	
-	static Option getCompOption()
+	static Menu getCompMenu()
 	{
-		Option compOption = new Option("Compétition","4", getCompAction());
-		return compOption;
+		Menu compMenu = new Menu("Menu Compétition");
+		return compMenu;
 	}
 // =================================================================================================================================
-	static Action getTeamAction()
-	{
-		return new Action()
-		{
-			
-		}
-	}
-	
-	static Action getPersonneAction()
-	{
-		return new Action()
-		{
-			
-		}
-	}
-	
-	static Action getCandAction()
-	{
-		return new Action()
-		{
-			
-		}
-	}
-	
-	static Action getCompAction()
-	{
-		return new Action()
-		{
-			
-		}
-	}
+//	static Action getTeamAction()
+//	{
+//		return new Action()
+//		{
+//			
+//		}
+//	}
+//	
+//	static Action getPersonneAction()
+//	{
+//		return new Action()
+//		{
+//			
+//		}
+//	}
+//	
+//	static Action getCandAction()
+//	{
+//		return new Action()
+//		{
+//			
+//		}
+//	}
+//	
+//	static Action getCompAction()
+//	{
+//		return new Action()
+//		{
+//			
+//		}
+//	}
 	
 	
 }
