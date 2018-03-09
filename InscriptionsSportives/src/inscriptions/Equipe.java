@@ -34,7 +34,7 @@ public class Equipe extends Candidat
 	 * @param membre
 	 * @return
 	 */
-
+//o
 	public boolean add(Personne membre)
 	{
 		membre.add(this);
