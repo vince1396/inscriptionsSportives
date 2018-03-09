@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.time.LocalDate;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import inscriptions.InscException;
 
 /**
  * Point d'entrée dans l'application, un seul objet de type Inscription
@@ -247,7 +248,14 @@ public class Inscriptions implements Serializable
 		Competition flechettes = inscriptions.createCompetition("Mondial de fléchettes", null, false);
 		Personne tony = inscriptions.createPersonne("Tony", "Dent de plomb", "azerty"), 
 				boris = inscriptions.createPersonne("Boris", "le Hachoir", "ytreza");
-		flechettes.add(tony);
+		if(flechettes.inscriptionsOuvertes())
+		{
+			flechettes.add(tony);
+		}
+		else
+		{
+			throw new InscException();
+		}
 		Equipe lesManouches = inscriptions.createEquipe("Les Manouches");
 		lesManouches.add(boris);
 		lesManouches.add(tony);
