@@ -1,3 +1,4 @@
+package hibernate_vide;
 /*package hibernate;
 
 import javax.persistence.*;

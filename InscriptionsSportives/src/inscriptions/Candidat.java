@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
 import javax.persistence.*;
+
+
 /**
  * Candidat à un événement sportif, soit une personne physique, soit une équipe.
  */
