@@ -1,4 +1,4 @@
-package hibernate;
+/*package hibernate;
 import javax.persistence.*;
 import org.hibernate.*;
 
@@ -23,3 +23,4 @@ public class Personne {
 		this.age = age;
 	}
 }
+*/

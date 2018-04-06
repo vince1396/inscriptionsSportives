@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.persistence.*;
+import org.hibernate.*;
 
 /**
  * Représente une compétition, c'est-à-dire un ensemble de candidats 
@@ -12,15 +14,36 @@ import java.util.TreeSet;
  *
  */
 
+
+@Entity
+@Table(name = "competition")
 public class Competition implements Comparable<Competition>, Serializable
 {
 	private static final long serialVersionUID = -2882150118573759729L;
 	private Inscriptions inscriptions;
+	public LocalDate dateSystem = LocalDate.now();
+	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_comp")
+	private int id_comp;
+	
+	@Column(name = "nom_comp")
 	private String nom;
-	private Set<Candidat> candidats;
-	private LocalDate dateCloture;
-	private boolean enEquipe = false;
 
+	@Column(name = "enEquipe")
+	private boolean enEquipe = false;
+	
+	@Column(name = "dateCloture")
+	private LocalDate dateCloture;
+	
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "inscription",
+	joinColumns = {@JoinColumn(name = "id_comp")},
+	inverseJoinColumns = {@JoinColumn(name = "id_cand")})
+	private Set<Candidat> candidats;
+	
 	Competition(Inscriptions inscriptions, String nom, LocalDate dateCloture, boolean enEquipe)
 	{
 		this.enEquipe = enEquipe;

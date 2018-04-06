@@ -1,5 +1,6 @@
 package inscriptions;
 
+import javax.persistence.*;
 import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
@@ -8,10 +9,33 @@ import java.util.TreeSet;
  * Représente une personne physique pouvant s'inscrire à une compétition.
  */
 
+
+@Entity
+@Table(name = "personne")
 public class Personne extends Candidat
 {
 	private static final long serialVersionUID = 4434646724271327254L;
-	private String prenom, mail;
+	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_p")
+	private int id_p;
+	
+	@Column(name = "prenom_p")
+	private String prenom;
+	
+	@Column(name = "nom_p")
+	private String nom;
+
+	@Column(name = "mail_p")
+	private String mail;
+	
+	@ManyToMany(cascade = { CascadeType.ALL })
+	 @JoinTable(
+	name = "Rattacher",
+	joinColumns = { @JoinColumn(name = "id_p") },
+	inverseJoinColumns = { @JoinColumn(name = "id_e") })
 	private Set<Equipe> equipes;
 	
 	Personne(Inscriptions inscriptions, String nom, String prenom, String mail)

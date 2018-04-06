@@ -1,4 +1,4 @@
-package hibernate;
+/*package hibernate;
 
 import javax.persistence.*;
 import org.hibernate.*;
@@ -21,3 +21,4 @@ public class Competition {
 		this.libelle = libelle;
 	}
 }
+*/

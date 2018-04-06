@@ -1,7 +1,6 @@
 package inscriptions;
 
 import menu.MainMenu;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,12 +12,16 @@ import java.time.LocalDate;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import inscriptions.InscException;
+import javax.persistence.*;
+
 
 /**
  * Point d'entrée dans l'application, un seul objet de type Inscription
  * permet de gérer les compétitions, candidats (de type equipe ou personne)
  * ainsi que d'inscrire des candidats à des compétition.
  */
+@Entity
+@Table (name="inscription")
 
 public class Inscriptions implements Serializable
 {
@@ -26,12 +29,27 @@ public class Inscriptions implements Serializable
 	private static final String FILE_NAME = "Inscriptions.srz";
 	private static Inscriptions inscriptions;
 	
-	private SortedSet<Competition> competitions = new TreeSet<>();
-	private SortedSet<Candidat> candidats = new TreeSet<>();
+	private SortedSet<Competition> Competitions = new TreeSet<>();
+	private SortedSet<Candidat> Candidats = new TreeSet<>();
 
 	private Inscriptions()
 	{
 	}
+	
+	@Id
+	@GeneratedValue (strategy = GenerationType.AUTO)
+	@Column(name = "id_cand")
+	private int id_cand;
+
+	@Column(name = "id_comp")
+	private int id_comp;
+	
+	public Inscriptions(int id_cand, int id_comp)
+	{
+		this.id_cand = id_cand;
+		this.id_comp = id_comp;
+	}
+
 	
 	/**
 	 * Retourne les compétitions.
@@ -40,7 +58,7 @@ public class Inscriptions implements Serializable
 	
 	public SortedSet<Competition> getCompetitions()
 	{
-		return Collections.unmodifiableSortedSet(competitions);
+		return Collections.unmodifiableSortedSet(Competitions);
 	}
 	
 	/**
@@ -50,7 +68,7 @@ public class Inscriptions implements Serializable
 	
 	public SortedSet<Candidat> getCandidats()
 	{
-		return Collections.unmodifiableSortedSet(candidats);
+		return Collections.unmodifiableSortedSet(Candidats);
 	}
 
 	/**
@@ -94,7 +112,7 @@ public class Inscriptions implements Serializable
 			LocalDate dateCloture, boolean enEquipe)
 	{
 		Competition competition = new Competition(this, nom, dateCloture, enEquipe);
-		competitions.add(competition);
+		Competitions.add(competition);
 		return competition;
 	}
 
@@ -111,7 +129,7 @@ public class Inscriptions implements Serializable
 	public Personne createPersonne(String nom, String prenom, String mail)
 	{
 		Personne personne = new Personne(this, nom, prenom, mail);
-		candidats.add(personne);
+		Candidats.add(personne);
 		return personne;
 	}
 	
@@ -127,18 +145,18 @@ public class Inscriptions implements Serializable
 	public Equipe createEquipe(String nom)
 	{
 		Equipe equipe = new Equipe(this, nom);
-		candidats.add(equipe);
+		Candidats.add(equipe);
 		return equipe;
 	}
 	
 	void remove(Competition competition)
 	{
-		competitions.remove(competition);
+		Competitions.remove(competition);
 	}
 	
 	void remove(Candidat candidat)
 	{
-		candidats.remove(candidat);
+		Candidats.remove(candidat);
 	}
 	
 	/**

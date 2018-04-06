@@ -1,4 +1,4 @@
-package hibernate;
+/*package hibernate;
 
 import javax.persistence.*;
 import org.hibernate.*;
@@ -17,3 +17,4 @@ public class Equipe {
 		this.id_e = id_e;
 	}
 }
+*/

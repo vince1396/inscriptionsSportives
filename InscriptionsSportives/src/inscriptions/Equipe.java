@@ -1,6 +1,7 @@
 package inscriptions;
 
 import java.util.Collections;
+import javax.persistence.*;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -10,15 +11,36 @@ import java.util.TreeSet;
  * 
  */
 
+
+@Entity
+@Table(name = "equipe")
 public class Equipe extends Candidat
 {
 	private static final long serialVersionUID = 4147819927233466035L;
 	private SortedSet<Personne> membres = new TreeSet<>();
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_e")
+	private int id_e;
+	
+	@Column(name = "nom_e")
+	private String nom_e;
+	
+
+	 @ManyToMany(cascade = { CascadeType.ALL })
+	 @JoinTable(
+	name = "appartenir",
+	joinColumns = { @JoinColumn(name = "id_e") },
+	inverseJoinColumns = { @JoinColumn(name = "id_p") })
+	
+	private SortedSet<Personne> personnes = new TreeSet<>();
+	
 	Equipe(Inscriptions inscriptions, String nom)
 	{
 		super(inscriptions, nom);
 	}
+
 
 	/**
 	 * Retourne l'ensemble des personnes formant l'équipe.

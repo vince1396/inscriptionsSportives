@@ -1,4 +1,4 @@
-package hibernate;
+/*package hibernate;
 
 import javax.persistence.*;
 import org.hibernate.*;
@@ -19,4 +19,4 @@ public class Candidat {
 		this.id_cand = id_cand;
 		this.nom = nom;
 	}
-}
+} */

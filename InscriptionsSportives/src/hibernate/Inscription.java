@@ -1,4 +1,4 @@
-package hibernate;
+/*package hibernate;
 
 import javax.persistence.*;
 import org.hibernate.*;
@@ -21,4 +21,4 @@ public class Inscription {
 		this.id_cand = id_cand;
 		this.id_comp = id_comp;
 	}
-}
+}*/
