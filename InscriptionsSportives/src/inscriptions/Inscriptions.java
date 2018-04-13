@@ -266,13 +266,12 @@ public class Inscriptions implements Serializable
 		Competition flechettes = inscriptions.createCompetition("Mondial de fléchettes", null, false);
 		Personne tony = inscriptions.createPersonne("Tony", "Dent de plomb", "azerty"), 
 				boris = inscriptions.createPersonne("Boris", "le Hachoir", "ytreza");
-		if(flechettes.inscriptionsOuvertes())
-		{
+	
+		try {
 			flechettes.add(tony);
 		}
-		else
-		{
-			throw new InscException();
+		catch (InscException e) {
+			e.errorMessage();
 		}
 		Equipe lesManouches = inscriptions.createEquipe("Les Manouches");
 		lesManouches.add(boris);
