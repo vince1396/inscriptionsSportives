@@ -1,10 +1,12 @@
 package menu;
 
+import java.util.Scanner;
+import inscriptions.*;
 import commandLineMenus.*;
 
 public class MainMenu {
 	
-	public void initMenuRoot ()
+	public void initMenuRoot (Inscriptions insc)
 	{
 		Menu rootMenu = new Menu("Root Menu");
 
@@ -17,16 +19,16 @@ public class MainMenu {
 		rootMenu.add(gestionPersonne);
 		rootMenu.addQuit("q");
 		
-		initMenuComp(gestionComp);
-		initMenuEquipe(gestionEquipe);
-		initMenuPersonne(gestionPersonne);
+		initMenuComp(gestionComp, insc);
+		initMenuEquipe(gestionEquipe, insc);
+		initMenuPersonne(gestionPersonne, insc);
 		
 		rootMenu.start();
 	}
 	
 // ======================================================================================================================
 	
-	public void initMenuComp(Menu menu)
+	public void initMenuComp(Menu menu, Inscriptions insc)
 	{
 		Option createComp = new Option("Créer Compétition","1");
 		Option updateComp = new Option("Modifier Compétition","2");
@@ -115,7 +117,7 @@ public class MainMenu {
 	
 // =====================================================================================================================
 	
-	public void initMenuEquipe(Menu menu)
+	public void initMenuEquipe(Menu menu, Inscriptions insc)
 	{
 		Option createEquipe = new Option("Créer Equipe","1");
 		Option updateEquipe = new Option("Modifier Equipe","2");
@@ -203,7 +205,7 @@ public class MainMenu {
 	
 // =====================================================================================================================
 	
-	public void initMenuPersonne(Menu menu)
+	public void initMenuPersonne(Menu menu, Inscriptions insc)
 	{
 		Option addPersonne = new Option("Ajouter une Personne","1");
 		Option updatePersonne = new Option("Modifier infos Personne","2");
@@ -225,7 +227,18 @@ public class MainMenu {
 			@Override
 			public void optionSelected()
 			{
-				System.out.println("Test Ajout Personne");
+				Scanner sc = new Scanner(System.in);
+				
+				System.out.println("Nom : ");
+				String nom = sc.nextLine();
+				System.out.println("Prénom : ");
+				String prenom = sc.nextLine();
+				System.out.println("Mail : ");
+				String mail = sc.nextLine();
+				
+				sc.close();
+				
+				insc.createPersonne(nom, prenom, mail);
 			}
 		};
 		

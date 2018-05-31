@@ -32,8 +32,9 @@ public class Inscriptions implements Serializable
 	private SortedSet<Competition> Competitions = new TreeSet<>();
 	private SortedSet<Candidat> Candidats = new TreeSet<>();
 
-	private Inscriptions()
+	public Inscriptions()
 	{
+		
 	}
 	
 	@Id
